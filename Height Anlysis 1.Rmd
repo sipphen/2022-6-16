@@ -1,0 +1,27 @@
+---
+title: "Height Analysis 1"
+author: "Henry Sippel"
+date: '2022-06-17'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(primer.data)
+nhanes |> 
+  filter(age >= 18) |> 
+  select(height) |> 
+  ggplot(data = nhanes, mapping = aes(x = height)) +
+           geom_histogram(bin = 20, color = "black", fill = "steel blue") +
+  facet_wrap(~gender)
+  labs(title = "Height in NHANES", 
+       x = "Height (cm)", y = "Count")
+  
+
+```
+
+
